@@ -35,7 +35,7 @@ function exploreAPICall(locationData) {
 }
 
 
-
+$('#user_input').submit((e)=>{e.preventDefault();handleClick();})
 $('#submit_btn').click(handleClick);
 
 function handleClick(){
@@ -45,6 +45,7 @@ function handleClick(){
   }else {
     locationValue = 'No Data';
   }
+  $('#places').empty();
   $(exploreAPICall(locationValue));
 }
 
