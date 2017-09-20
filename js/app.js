@@ -4,11 +4,11 @@ const client = {
   exploreURL: 'https://api.foursquare.com/v2/venues/explore'
 }
 
-function exploreAPICall() {
+function exploreAPICall(locationData) {
   const query = {
     client_id: client.id,
     client_secret: client.secret,
-    near: 'Washington, DC',
+    near: locationData,
     v: '20170919'
   }
   $.getJSON(client.exploreURL, query, function cb(results) {
@@ -34,7 +34,17 @@ function exploreAPICall() {
   })
 }
 
-$(exploreAPICall);
 
 
+$('#submit_btn').click(handleClick);
+
+function handleClick(){
+  var locationValue;
+  if($('#location_input').val()) {
+    locationValue= $('#location_input').val();
+  }else {
+    locationValue = 'No Data';
+  }
+  $(exploreAPICall(locationValue));
+}
 
