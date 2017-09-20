@@ -9,7 +9,7 @@ function exploreAPICall(locationData) {
     client_id: client.id,
     client_secret: client.secret,
     near: locationData,
-    v: '20170920'
+    v: '20170919'
   }
   $.getJSON(client.exploreURL, query, function cb(results) {
     // console.log(results)
@@ -36,18 +36,15 @@ function exploreAPICall(locationData) {
 
 
 
+$('#submit_btn').click(handleClick);
 
 function handleClick(){
-  $('#places').empty(); // Clear the div.
   var locationValue;
   if($('#location_input').val()) {
     locationValue= $('#location_input').val();
   }else {
     locationValue = 'No Data';
   }
-  console.log(locationValue);
   $(exploreAPICall(locationValue));
 }
 
-$('#input_form').submit((e)=>{e.preventDefault(); handleClick();});
-$('#submit_btn').click(handleClick);
